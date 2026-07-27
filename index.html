@@ -323,6 +323,16 @@
   @media (prefers-reduced-motion:reduce){.gcard,.acard{opacity:1;transform:none;transition:none}}
 </style>
 <script>
+  // legacy shell URLs: the site used #platformone / #cypher / #legal before the
+  // pages were split onto real paths. Fragments never reach the server, so this
+  // is the only place these can be redirected.
+  (function(){
+    var legacy={'#cypher':'cypher/','#legal':'legal/','#platformone':''};
+    var to=legacy[location.hash];
+    if(to!==undefined&&location.hash)location.replace(to||location.pathname);
+  })();
+</script>
+<script>
   // raise the shutters before first paint so the page never flashes through
   if(location.search.indexOf('enter=shutter')>-1
      && !matchMedia('(prefers-reduced-motion:reduce)').matches){

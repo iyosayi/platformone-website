@@ -1,0 +1,7 @@
+# Cloudflare Pages response headers.
+# Filenames in /assets/ are not content-hashed, so this is a 30-day cache rather
+# than an immutable one — if an image is replaced under the same name, visitors
+# pick it up within a month. Switch to `immutable` only if the build starts
+# hashing filenames.
+/assets/*
+  Cache-Control: public, max-age=2592000
