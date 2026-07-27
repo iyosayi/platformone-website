@@ -1,3 +1,72 @@
+# getplatformone.com
+#
+# Policy: allow search and citation crawlers, block bulk training crawlers.
+#
+# The distinction matters. Blocking a training crawler keeps our copy out of a
+# model's weights. Blocking a *search* crawler removes us from that assistant's
+# answers entirely — the opposite of what we want, since buyers increasingly ask
+# an assistant "what AI governance tools exist for X" before opening Google.
+#
+# Note: Google-Extended and Applebot-Extended govern AI training only. Blocking
+# them has NO effect on Google Search or Siri/Spotlight ranking — those are
+# Googlebot and Applebot, allowed below.
+#
+# Crawler tokens change as vendors add and rename them. Review periodically.
+
+# ---------------------------------------------------------------- search
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ------------------------------------------------- AI search and citation
+# These fetch a page to answer a live question and cite the source. Keep open.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# ------------------------------------------------------------- AI training
+# Bulk collection for model training. No citation, no referral traffic.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# ---------------------------------------------------------------- default
 User-agent: *
 Allow: /
 
