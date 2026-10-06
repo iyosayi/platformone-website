@@ -1045,7 +1045,7 @@ function hideWord(w, fast){ w.on = false; gsap.killTweensOf(w.letters);
 
 const cur = document.getElementById('hcur'), prg = document.getElementById('hprg');
 const CIRC = 2*Math.PI*30; prg.style.strokeDasharray = CIRC; prg.style.strokeDashoffset = CIRC;
-let holding = false, holdTw = null, arrived = false;
+let holding = false, holdTw = null, arrived = false, auto = false;
 const HOLD_DUR = 7.5;
 function startHold(){
   if (holding || REDUCED || (window.__cyFocus||0) > .02) return; holding = true; arrived = false;
@@ -1055,7 +1055,7 @@ function startHold(){
   gsap.to(fx.uniforms.uAb, { value:.004, duration:1.2 });
 }
 function endHold(){
-  if (!holding) return; holding = false;
+  if (!holding) return; holding = false; auto = false;
   root.classList.remove('is-holding'); cur.classList.remove('is-holding');
   holdTw?.kill(); holdTw = gsap.to(st, { p:0, duration:1.25, ease:'power3.inOut' });
   words.forEach(w => { w.on = false; gsap.killTweensOf(w.letters); gsap.set(w.letters, { opacity:0, delay:.25 }); });
@@ -1070,9 +1070,9 @@ if (isFine && !REDUCED){
     qx(e.clientX-38); qy(e.clientY-38); aimPointer(e.clientX, e.clientY);
     cur.classList.add('is-visible'); cur.classList.toggle('is-hidden', (!!blocked(e.target) && !holding) || (window.__cyFocus||0) > .02);
   });
-  hero.addEventListener('pointerleave', () => { cur.classList.remove('is-visible'); ptr.tamt = 0; endHold(); });
+  hero.addEventListener('pointerleave', () => { cur.classList.remove('is-visible'); ptr.tamt = 0; if (!auto) endHold(); });
   addEventListener('scroll', () => { if (holding && scrollY > innerHeight*.25) endHold(); }, { passive:true });
-  hero.addEventListener('pointerdown', e => { if (e.button !== 0 || blocked(e.target)) return; e.preventDefault(); startHold(); });
+  hero.addEventListener('pointerdown', e => { if (e.button !== 0 || blocked(e.target)) return; e.preventDefault(); if (auto){ auto = false; return; } startHold(); });   // pressing during the intro takes it over
   addEventListener('pointerup', endHold);
   addEventListener('blur', endHold);
   hero.style.cursor = 'none';
@@ -1176,7 +1176,23 @@ if (REDUCED){ resize(); tick(); addEventListener('resize', () => tick()); }
 else renderer.setAnimationLoop(() => { if (visible && !document.hidden) tick(); });
 
 function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-window.__cy = { st, startHold, endHold };
+/* ---------- intro: play the journey once on arrival, then settle back to the hero ---------- */
+function autoPlay(){
+  if (REDUCED || holding || scrollY > innerHeight*.25) return;
+  startHold(); if (!holding) return;
+  auto = true; tap.textContent = 'Tap to stop';
+  holdTw.eventCallback('onComplete', () => {
+    if (!auto) return;                               // the visitor took over: their release ends it
+    setTimeout(() => { if (auto && holding){ endHold(); tap.textContent = 'Tap to explore'; } }, 700);
+  });
+}
+let seen = false; try { seen = sessionStorage.getItem('p1-intro') === '1'; sessionStorage.setItem('p1-intro','1'); } catch(e){}
+if (!seen){
+  const go = () => setTimeout(autoPlay, 900);
+  if (document.hidden) document.addEventListener('visibilitychange', function once(){ if (!document.hidden){ document.removeEventListener('visibilitychange', once); go(); } });
+  else go();
+}
+window.__cy = { st, startHold, endHold, autoPlay };
 }
 </script>
 
