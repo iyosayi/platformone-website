@@ -1,6 +1,6 @@
 # PlatformOne
 
-> PlatformOne builds the standard parts AI runs on: identity for agents, memory that persists, and a control plane that governs them. Cypher is the first product.
+> PlatformOne builds the infrastructure businesses need to operate, secure and scale: infrastructure for enterprise, built for Africa. It builds technology products for enterprise security, business operations, and intelligent systems, designed around the realities of African businesses. Cypher, AI governance for the enterprise, is its first product.
 
 ## Cypher
 
@@ -16,10 +16,11 @@ Cypher gives organisations visibility and control over how employees use AI. It 
 ## Pages
 
 - [Cypher](https://getplatformone.com/cypher/): product overview, use cases, security, and FAQ
-- [PlatformOne](https://getplatformone.com/): company overview
+- [PlatformOne](https://getplatformone.com/): company overview, approach, and products
 - [Legal](https://getplatformone.com/legal/): privacy policy, terms of service, and data protection
 
 ## Contact
 
 - Email: hello@getplatformone.com
-- Demo requests: https://getplatformone.com/cypher/ ("Book a demo")
+- Enquiries: https://getplatformone.com/ ("Talk to us")
+- Cypher demo requests: https://getplatformone.com/cypher/ ("Book a demo")
