@@ -3,19 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cypher — AI adoption. Under control.</title>
-<meta name="description" content="Cypher sits between your people and the AI tools they use. It evaluates AI interactions against your policy, in the browser, at the point of interaction." />
+<title>Cypher — website prototype</title>
+<meta name="robots" content="noindex, nofollow" />
 <link rel="canonical" href="https://getplatformone.com/cypher/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="PlatformOne">
-<meta property="og:url" content="https://getplatformone.com/cypher/">
-<meta property="og:title" content="Cypher — AI adoption. Under control.">
-<meta property="og:description" content="Cypher sits between your people and the AI tools they use. It evaluates AI interactions against your policy, in the browser, at the point of interaction.">
-<meta property="og:image" content="https://getplatformone.com/assets/hero-dunes.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cypher — AI adoption. Under control.">
-<meta name="twitter:description" content="Cypher sits between your people and the AI tools they use. It evaluates AI interactions against your policy, in the browser, at the point of interaction.">
-<meta name="twitter:image" content="https://getplatformone.com/assets/hero-dunes.jpg">
 <meta name="theme-color" content="#0B1418" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='15' fill='%23C9F73D'/><text x='13' y='46' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='40' font-weight='700' fill='%23080A12'>C</text><rect x='41' y='20' width='9' height='26' rx='2' fill='%23080A12'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -77,7 +67,8 @@ html.no-gl .hero{background:radial-gradient(60% 50% at 70% 75%,rgba(201,247,61,.
 @keyframes lineUp{to{transform:none}}
 .hero-cta{margin-top:clamp(26px,4vh,40px);display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:0;animation:ctaIn .9s var(--ease) 1.2s forwards}
 @keyframes ctaIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-html.is-holding .hero-ui{opacity:0;transform:scale(.97)}
+html.is-holding .hero-ui{opacity:0!important;transform:scale(.97)}
+html.is-holding .tap-hold{opacity:1!important}
 html.is-holding header.navwrap{opacity:0;transform:translateY(-12px);pointer-events:none}
 
 /* hold words */
@@ -163,7 +154,7 @@ html.fx .track.r{left:calc(50% + var(--hpw)/2 + 26px)}
 .pill .tx{display:flex;flex-direction:column;gap:6px;min-width:0}
 .pill small{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--hi-3)}
 .pill .pt{font-size:clamp(13px,1.05vw,15.5px);line-height:1.42;color:var(--hi);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-@media (max-width:899px){:root{--ph:104px;--pw:300px}}
+@media (max-width:899px){:root{--pw:300px}}
 
 /* ============ WHY: Base-style pinned accordion ============ */
 .sheet{position:relative;z-index:5;background:#F2F3EE;color:var(--ink);border-radius:28px}
@@ -384,12 +375,12 @@ html.fx .pc.on .pc-b{opacity:1}
 .inds-note{margin-top:16px;text-align:center;font-size:13px;color:#6B7A7E}
 @media (max-width:899px){
   .inds{height:auto;flex-direction:column;align-items:stretch}
-  .ind,.ind:hover,.ind.open{height:auto;flex-grow:0}
-  .ind-h{position:relative;height:auto;gap:8px}
-  .ind-d{position:relative;bottom:auto;clip-path:none;padding-bottom:0}
+  html:not(.fx) .ind,html:not(.fx) .ind:hover,html:not(.fx) .ind.open{height:auto;flex-grow:0}
+  html:not(.fx) .ind-h{position:relative;height:auto;gap:8px}
+  html:not(.fx) .ind-d{position:relative;bottom:auto;clip-path:none;padding-bottom:0}
   .ind-d li{white-space:normal}
-  .ind::after{display:none}
-  .ind::before{transform:none;background:#fff}
+  html:not(.fx) .ind::after{display:none}
+  html:not(.fx) .ind::before{transform:none;background:#fff}
 }
 
 /* footer: the hero scene returns behind it */
@@ -432,10 +423,10 @@ html.fx .pc.on .pc-b{opacity:1}
 }
 @media (max-width:899px){
   .why-top,.why-stage{grid-template-columns:1fr;gap:24px}
-  .why-r,.wbar{display:none}
-  .why-acc{padding-left:0}
+  html:not(.fx) .why-r,html:not(.fx) .wbar{display:none}
+  html:not(.fx) .why-acc{padding-left:0}
   .wi{flex-direction:column;gap:6px}
-  .wi-vis{display:block;margin-top:18px}
+  html:not(.fx) .wi-vis{display:block;margin-top:18px}
   .wi-vis .vis{aspect-ratio:auto;min-height:240px}
   .con-body{grid-template-columns:1fr}.con-side{display:none}
   .stats{grid-template-columns:1fr 1fr}.stats div:last-child{display:none}
@@ -483,7 +474,7 @@ mark.hi.blue::after{background:rgba(103,196,237,.3)}
 @media (max-width:899px){
   .ft-in{padding:90px 24px 30px}
   .ft-cols{position:static;margin-top:40px;gap:40px}.ft-cols>div{width:auto}
-  .ft-cta{margin:60px 0 0}
+  .ft-cta{margin:auto 0 0;padding-top:60px}
   .sc-grid{grid-template-columns:1fr}
 }
 
@@ -559,7 +550,113 @@ html:not(.fx) canvas.dots{display:none}
 .ft-cta{margin-left:auto;text-align:right}
 .ft-btns{justify-content:flex-end}
 .ft-copy{font-size:13.5px;color:var(--hi-2)}
-@media (max-width:899px){.ft-cta{text-align:left;margin-left:0}.ft-btns{justify-content:flex-start}}
+@media (max-width:899px){.ft-cta{text-align:left;margin-left:0}.ft-cta h2{display:none}.ft-btns{justify-content:flex-start;margin-top:0}}
+
+/* ============ MOBILE: the same animations, laid out for a phone ============ */
+/* viewport-height units that don't jump when the address bar shows and hides */
+html.fx .istage,html.fx .why-stage,html.fx .pstage{height:100svh}
+/* buttons: the lime wipe also fires on tap */
+.btn:active::before{clip-path:inset(0 0 0 0)}
+.btn:active{color:var(--ink)!important}
+/* scroll-reveal for the non-pinned sections */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .85s var(--ease)}
+.rv.in{opacity:1;transform:none}
+/* tap states that mirror the hovers */
+.scard.on{border-color:rgba(201,247,61,.25)}
+.scard.on .scard-i .d{stroke-dashoffset:-30}
+.scope .sc-grid.has-focus .sc:not(.focus){opacity:.38;filter:grayscale(1)}
+.scope .sc-grid.has-focus .sc.focus{opacity:1;filter:none}
+
+/* mobile menu */
+.burger{display:none;align-self:stretch;width:64px;background:none;border:0;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.burger i{position:absolute;left:22px;width:20px;height:1.5px;background:#fff;transition:transform .45s cubic-bezier(.65,0,.25,1),top .45s cubic-bezier(.65,0,.25,1),background .35s}
+.burger i:first-child{top:31px}.burger i:last-child{top:39px}
+header.navwrap.nav-light .burger i{background:var(--ink)}
+html.menu-open .burger i{background:#fff}
+html.menu-open .burger i:first-child{top:35px;transform:rotate(45deg)}
+html.menu-open .burger i:last-child{top:35px;transform:rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:69;background:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;padding:96px 24px 36px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility 0s .4s}
+html.menu-open .mnav{opacity:1;visibility:visible;transition:opacity .4s var(--ease)}
+.mnav nav{display:flex;flex-direction:column;gap:6px;margin-bottom:auto;padding-top:4vh}
+.mnav nav a{font-family:var(--head);font-weight:500;font-size:clamp(34px,9.5vw,44px);letter-spacing:-.05em;line-height:1.15;color:#fff;opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+html.menu-open .mnav nav a{opacity:1;transform:none}
+html.menu-open .mnav nav a:nth-child(2){transition-delay:.05s}html.menu-open .mnav nav a:nth-child(3){transition-delay:.1s}html.menu-open .mnav nav a:nth-child(4){transition-delay:.15s}html.menu-open .mnav nav a:nth-child(5){transition-delay:.2s}html.menu-open .mnav nav a:nth-child(6){transition-delay:.25s}
+.mnav-foot{display:flex;flex-direction:column;gap:18px;align-items:flex-start;opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease) .3s,transform .6s var(--ease) .3s}
+html.menu-open .mnav-foot{opacity:1;transform:none}
+.mnav-mail{font-family:var(--mono);font-size:12.5px;color:var(--hi-2);text-decoration:underline;text-underline-offset:3px}
+html.menu-open header.navwrap{transform:none!important}
+html.menu-open header.navwrap::before{opacity:0}
+html.menu-open header.navwrap .cy-logo{color:#fff}
+html.menu-open header.navwrap .btn-light{background:#fff;color:var(--ink)}
+@media (max-width:760px){.burger{display:block}.nav-right .btn{padding:0 22px}}
+
+@media (max-width:899px){
+  /* hero */
+  .tap-hold{left:auto;right:20px;bottom:auto;top:88px;transform:none;padding:10px 14px;font-size:10.5px}
+  .hw{font-size:clamp(48px,14vw,64px)}
+  .hw.w1{left:6%;top:18%}.hw.w2{right:6%;top:40%}.hw.w3{top:66%}
+
+  /* work is changing */
+  html.fx .intro{height:380vh}
+  html.fx #wicA,html.fx #wicB{left:24px;right:24px;top:13svh;max-width:none}
+  html.fx .wic-head h2{font-size:clamp(30px,8.6vw,40px)}
+  html.fx .wic-head p{font-size:14.5px;margin-top:10px}
+  html.fx .track.l,html.fx .track.r{display:none}
+  html.fx .prow.r1{top:calc(44svh - var(--ph)/2)}
+  html.fx .prow.r2{top:calc(61svh - var(--ph)/2)}
+  html.fx .prow.r3{top:calc(78svh - var(--ph)/2)}
+  html.fx .hpill-logo,html.fx .hpill-edge{top:61svh}
+  .pill{padding-right:22px}
+  .pill .pt{font-size:13px;-webkit-line-clamp:2}
+
+  /* for your people: visual on top, points below, all pinned */
+  html.fx .why-pin{height:380vh}
+  html.fx .why-stage{display:flex;flex-direction:column;gap:0;padding:68px 20px 14px}
+  html.fx .why-r{display:block;order:-1;flex:none;height:min(33svh,300px);aspect-ratio:auto;width:100%}
+  html.fx .why-r .vis{padding:14px}
+  html.fx .why-r .panel{zoom:.84}
+  html.fx .why-l{display:flex;flex-direction:column;flex:1;min-height:0;margin-top:14px}
+  html.fx .why-l .eyebrow-sq{font-size:10px}
+  html.fx .why-acc{margin:12px 0 34px;padding-left:18px;flex:0 0 auto}
+  html.fx .wbar{display:block;top:4px;bottom:4px}
+  html.fx .why-list{gap:9px}
+  html.fx .wi h3{font-size:19px;line-height:1.2}
+  html.fx .wi-b p{padding-top:6px;font-size:14px;line-height:1.45;max-width:none}
+  html.fx .wi-vis{display:none}
+  html.fx .why-l .btn{align-self:flex-start;padding:11px 20px;font-size:14px}
+
+  /* for your organisation: heading, console, then the card stack */
+  html.fx .prod{height:300vh}
+  html.fx .p-head{left:20px;right:20px;width:auto;top:4svh}
+  html.fx .p-head h2{font-size:clamp(23px,6.4vw,30px);margin-top:8px}
+  html.fx .console{left:20px;right:20px;width:auto;top:17svh;height:27svh;border-radius:6px}
+  html.fx .con-main{zoom:.72;padding:14px 16px}
+  html.fx .pcards{left:20px;right:20px;width:auto;top:47svh;bottom:auto;height:min(310px,50svh);overflow:hidden;border-radius:16px}
+  html.fx .pc{top:calc(var(--i)*44px);height:calc(100% - var(--i)*44px);padding:16px 18px;border-radius:16px}
+  html.fx .pc-h{height:20px}
+  html.fx .pc-h h3,html.fx .pc:not(.on) .pc-h h3{font-size:18px}
+  html.fx .pc-b{margin-top:12px}
+  html.fx .pc-t{font-size:clamp(18px,5.2vw,21px)}
+  html.fx .pc-b p+p{font-size:13.5px;line-height:1.45;margin-top:8px}
+
+  /* industry bars: tap to open, the teal scan runs down the bar as it grows */
+  html.fx .inds{gap:4px;margin-top:36px}
+  html.fx .ind{flex:none;width:100%;height:64px;transition:height .7s cubic-bezier(.65,0,.25,1)}
+  html.fx .ind:hover{height:64px;flex-grow:0}
+  html.fx .ind.open,html.fx .ind.open:hover{height:calc(64px + 48px + var(--n)*26px + 18px)}
+  html.fx .ind:not(.open)::before{transform:scaleY(0)}
+  html.fx .ind:not(.open)::after{opacity:0;animation:none}
+  html.fx .ind-h{inset:0 0 auto 0;height:64px;justify-content:center;padding:0 18px}
+  html.fx .ind-h i{top:28px;transition:transform .5s var(--ease)}
+  html.fx .ind.open .ind-h i{transform:rotate(135deg)}
+  html.fx .ind-d{top:64px;bottom:auto;padding:2px 18px 0}
+  html.fx .ind:not(.open) .ind-d{clip-path:inset(0 0 100% 0)}
+  html.fx .ind-d ul{gap:8px;margin-top:10px}
+  html.fx .ind-d li{font-size:14px;line-height:18px}
+
+  /* dot fields: a touch sparser on small screens */
+  canvas.dots{opacity:.85}
+}
 
 /* no orphans */
 h1,h2,h3{text-wrap:balance}
@@ -569,7 +666,7 @@ p,li{text-wrap:pretty}
 .hl{align-items:flex-start;text-align:left;font-size:clamp(48px,5.97vw,86px);line-height:.94;letter-spacing:-.06em}
 .hero-cta{margin-top:0;justify-content:flex-end;padding-bottom:.6em}
 @media (max-width:899px){
-  .hero-ui{grid-template-columns:1fr;padding:0 24px 96px;gap:28px}
+  .hero-ui{grid-template-columns:1fr;align-content:end;padding:0 24px 72px;gap:28px}
   .hl{font-size:clamp(46px,13vw,72px)}
   .hero-cta{justify-content:flex-start;padding-bottom:0}
 }
@@ -586,10 +683,14 @@ p,li{text-wrap:pretty}
 <header class="navwrap" id="nav">
   <div class="nav-float"><div class="nav-in">
     <a class="brand" href="#top" aria-label="Cypher home"><span class="cy-logo" aria-hidden="true"><span class="cy-word">Cypher</span><span class="cy-block"></span></span><small>by PlatformOne</small></a>
-    <nav class="nav-links" aria-label="Primary"><a href="#why">What it does</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="../">Company</a></nav>
-    <div class="nav-right"><a href="#" class="btn btn-light">Book a demo</a></div>
+    <nav class="nav-links" aria-label="Primary"><a href="#why">What it does</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="https://getplatformone.com/">Company</a></nav>
+    <div class="nav-right"><button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i></button><a href="#" class="btn btn-light">Book a demo</a></div>
   </div></div>
 </header>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <nav aria-label="Mobile"><a href="#why">What it does</a><a href="#product">For your organisation</a><a href="#use-cases">Use cases</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="https://getplatformone.com/">Company</a></nav>
+  <div class="mnav-foot"><a href="#" class="btn btn-light">Book a demo <span class="arrow" aria-hidden="true">→</span></a><a href="mailto:hello@getplatformone.com" class="mnav-mail">hello@getplatformone.com</a></div>
+</div>
 
 <span id="top"></span>
 <section class="intro" id="intro" aria-label="Employees are already using AI">
@@ -875,7 +976,7 @@ p,li{text-wrap:pretty}
       </div>
       <nav class="ft-cols" aria-label="Footer">
         <div><p>Product</p><a href="#why">For your people</a><a href="#product">For your organisation</a><a href="#security">Security</a><a href="#use-cases">Use cases</a><a href="#faq">FAQ</a></div>
-        <div><p>Company</p><a href="../">About PlatformOne</a><a href="mailto:hello@getplatformone.com">Contact</a><a href="#">Book a demo</a></div>
+        <div><p>Company</p><a href="https://getplatformone.com/">About</a><a href="mailto:hello@getplatformone.com">Contact</a><a href="#">Book a demo</a></div>
       </nav>
     </div>
     <div class="ft-cta">
@@ -883,7 +984,7 @@ p,li{text-wrap:pretty}
       <div class="ft-btns"><a href="#" class="btn btn-light">Book a demo <span class="arrow" aria-hidden="true">→</span></a><a href="mailto:hello@getplatformone.com" class="btn btn-glass">Get in touch</a></div>
     </div>
     <div class="ft-bot">
-      <nav aria-label="Legal"><a href="../legal/#privacy">Privacy</a><a href="../legal/#terms">Terms</a><a href="../legal/#data-protection">Data protection</a></nav>
+      <nav aria-label="Legal"><a href="https://getplatformone.com/legal/#privacy">Privacy</a><a href="https://getplatformone.com/legal/#terms">Terms</a><a href="https://getplatformone.com/legal/#data-protection">Data protection</a></nav>
       <span class="ft-copy">© 2026 Cypher, a product of PlatformOne.</span>
     </div>
   </div>
@@ -896,7 +997,8 @@ p,li{text-wrap:pretty}
 <script>
 /* flags before first paint */
 (function(){var d=document.documentElement;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('reduced');else if(innerWidth>=900)d.classList.add('fx');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('reduced');else d.classList.add('fx');
+  if(matchMedia('(hover: none), (pointer: coarse)').matches)d.classList.add('touch');
   try{var c=document.createElement('canvas');if(!(c.getContext('webgl2')||c.getContext('webgl')))d.classList.add('no-gl')}catch(e){d.classList.add('no-gl')}
 })();
 </script>
@@ -1127,7 +1229,7 @@ function layoutHero(){
   const a = innerWidth/innerHeight;
   const z = a < .8 ? 27 : a < 1.2 ? 21 : 17;
   heroPos.set(a < .8 ? 2.2 : .4, a < .8 ? 1.4 : .9, z);
-  heroLook.set(a < .8 ? 2.6 : -2.2, a < .8 ? 1.6 : -2.2, 0);
+  heroLook.set(a < .8 ? 3.6 : -2.2, a < .8 ? -2.9 : -2.2, 0);
 }
 const ENDP = base.getPointAt(.66).add(new THREE.Vector3(1.5, 6.2, 6.5)), ENDL = base.getPointAt(.5);
 const RIDE0 = .05, RIDE1 = .64;
@@ -1290,10 +1392,13 @@ window.__cy = { st, startHold, endHold };
   var root=document.documentElement, FX=root.classList.contains('fx');
   if(!window.gsap||!window.ScrollTrigger){root.classList.remove('fx');return;}
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ignoreMobileResize:true});
+  var TOUCH=root.classList.contains('touch');
   window.__cyFocus=0;
 
   if(FX&&window.Lenis){
     var lenis=new Lenis({lerp:.09,wheelMultiplier:.95});
+    window.__lenis=lenis;
     lenis.on('scroll',ScrollTrigger.update);
     gsap.ticker.add(function(t){lenis.raf(t*1000);});
     gsap.ticker.lagSmoothing(0);
@@ -1327,6 +1432,29 @@ window.__cy = { st, startHold, endHold };
 
 
   document.querySelectorAll('.ind').forEach(function(b){b.addEventListener('click',function(){var o=b.classList.contains('open');document.querySelectorAll('.ind.open').forEach(function(x){x.classList.remove('open');});if(!o&&!matchMedia('(hover:hover)').matches)b.classList.add('open');});});
+  /* mobile menu */
+  var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
+  function setMenu(open){root.classList.toggle('menu-open',open);burger.setAttribute('aria-expanded',open);burger.setAttribute('aria-label',open?'Close menu':'Open menu');mnav.setAttribute('aria-hidden',!open);
+    if(window.__lenis){open?window.__lenis.stop():window.__lenis.start();}document.body.style.overflow=open?'hidden':'';}
+  burger.addEventListener('click',function(){setMenu(!root.classList.contains('menu-open'));});
+  mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  addEventListener('resize',function(){if(innerWidth>760&&root.classList.contains('menu-open'))setMenu(false);});
+
+  /* hover states become taps on touch screens */
+  if(TOUCH){
+    document.querySelectorAll('.scard').forEach(function(c){c.addEventListener('click',function(){var on=c.classList.contains('on');document.querySelectorAll('.scard.on').forEach(function(x){x.classList.remove('on');});if(!on)c.classList.add('on');});});
+    var scg=document.querySelector('.scope .sc-grid');
+    if(scg)scg.querySelectorAll('.sc').forEach(function(t){t.addEventListener('click',function(){scg.classList.add('has-focus');scg.querySelectorAll('.sc').forEach(function(x){x.classList.toggle('focus',x===t);});});});
+  }
+
+  /* scroll reveals for the sections that aren't pinned */
+  if(FX){
+    var rvs=[].slice.call(document.querySelectorAll('.why-top>*,.uc-head,.inds,.inds-note,.scope .wrap>h2,.scope .sc-grid,.sec-head,.sec-cards,.faq-grid>div:first-child,.qas,.ft-cta'));
+    rvs.forEach(function(el,i){el.classList.add('rv');});
+    var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    rvs.forEach(function(el){rio.observe(el);});
+  }
+
   if(!FX) return;
 
   /* intro: hero shrinks into the Cypher pill; prompts slide in around it */
