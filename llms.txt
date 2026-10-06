@@ -1,0 +1,25 @@
+# PlatformOne
+
+> PlatformOne builds the standard parts AI runs on: identity for agents, memory that persists, and a control plane that governs them. Cypher is the first product.
+
+## Cypher
+
+Cypher gives organisations visibility and control over how employees use AI. It sits between employees and the AI tools they use (such as ChatGPT, Claude, Gemini, Perplexity, DeepSeek and GitHub Copilot) and evaluates each AI interaction against the organisation's policy, in the browser, at the point of interaction.
+
+- See AI usage: which AI tools employees use, who uses them, and how AI is becoming part of everyday work. Account type is shown where detectable.
+- Control what leaves: when policy does not allow an interaction, Cypher stops it and records the decision.
+- Warn before it leaves: the employee sees a policy warning and chooses to proceed or cancel; Cypher records the choice and the outcome.
+- Protect sensitive data: detected sensitive information, including identifiers such as NIN and BVN and other PII, is masked where supported so work can continue.
+- Decision records capture the user, AI service, policy triggered, outcome, and time of each decision.
+- Cypher works alongside existing security tools; it does not replace identity, device management, or other security infrastructure. Its current focus is browser-based employee interactions with AI.
+
+## Pages
+
+- [Cypher](https://getplatformone.com/cypher/): product overview, use cases, security, and FAQ
+- [PlatformOne](https://getplatformone.com/): company overview
+- [Legal](https://getplatformone.com/legal/): privacy policy, terms of service, and data protection
+
+## Contact
+
+- Email: hello@getplatformone.com
+- Demo requests: https://getplatformone.com/cypher/ ("Book a demo")
