@@ -6,44 +6,113 @@
 <title>Page not found — PlatformOne</title>
 <meta name="description" content="That page doesn't exist. Head back to PlatformOne or Cypher." />
 <meta name="robots" content="noindex, follow" />
-<link rel="icon" href="/assets/icon-platformone.svg">
+<meta name="theme-color" content="#080A12" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%233347FF'/><rect x='20' y='20' width='24' height='24' rx='5' fill='%23F4F2EC'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/tasa-orbiter@5.3.0/500.css" rel="stylesheet">
+<!-- served for every unknown path, at any depth: keep every link root-relative -->
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--ink:#0B1418;--acid:#C9F73D;--hi:#F2F5F4;--hi-2:#A6B4B8;--hi-3:#6B7A7E;
-    --line:rgba(255,255,255,.14);
-    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
-  body{min-height:100svh;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;gap:0;padding:40px 24px;text-align:center;
-    background:var(--ink);color:var(--hi);font-family:var(--sans);line-height:1.55;
-    -webkit-font-smoothing:antialiased}
-  .code{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--hi-3);display:inline-flex;align-items:center;gap:10px}
-  .code::before{content:"//";color:var(--acid);letter-spacing:0}
-  h1{margin:20px 0 0;font-size:clamp(30px,5vw,48px);line-height:1.06;letter-spacing:-.035em;
-    font-weight:500;text-wrap:balance}
-  p{margin:16px 0 0;color:var(--hi-2);font-size:17px;max-width:44ch}
-  .actions{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  a.btn{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:500;
-    padding:13px 24px;border-radius:999px;border:1px solid transparent;text-decoration:none;
-    transition:transform .16s cubic-bezier(.22,.61,.36,1),background .2s,border-color .2s}
-  a.primary{background:var(--acid);color:var(--ink)}
-  a.primary:hover{background:#A8D420;transform:translateY(-2px)}
-  a.ghost{background:rgba(255,255,255,.05);color:var(--hi);border-color:var(--line)}
-  a.ghost:hover{border-color:rgba(255,255,255,.34);transform:translateY(-2px)}
-  .sig{margin-top:44px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;
-    text-transform:uppercase;color:rgba(255,255,255,.28)}
-  @media (prefers-reduced-motion:reduce){a.btn:hover{transform:none}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#080A12;--ink-3:#141A32;--bone:#F4F2EC;--bone-dim:#C9C6BC;--n5:#6B7180;--p1:#3347FF;--p1b:#4E5EFF;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+  --head:"TASA Orbiter","Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--cut:cubic-bezier(.65,0,.25,1);
+  --gut:clamp(20px,4.2vw,60px);
+}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;background:var(--ink)}
+body{min-height:100svh;display:flex;flex-direction:column;font-family:var(--sans);color:var(--bone);background:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;font-weight:500}
+a{color:inherit;text-decoration:none}
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* logo */
+.p1-logo{display:block;width:auto;fill:currentColor}
+.p1-logo .one{fill:#4E5EFF}.p1-logo .sq{fill:var(--p1)}
+
+/* buttons: square, with the family's wipe */
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:-.025em;padding:14px 28px;border-radius:0;border:1px solid transparent;cursor:pointer;transition:color .45s var(--cut),border-color .45s;white-space:nowrap}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--p1);clip-path:inset(100% 0 0 0);transition:clip-path .5s var(--cut)}
+.btn:hover::before,.btn:focus-visible::before{clip-path:inset(0 0 0 0)}
+.btn:hover,.btn:focus-visible{color:var(--bone)!important;border-color:var(--p1)}
+.btn:focus-visible{outline:2.5px solid var(--p1b);outline-offset:3px}
+.btn-light{background:var(--bone);color:var(--ink)}
+.btn-glass{background:rgba(255,255,255,.06);color:var(--bone);border-color:rgba(255,255,255,.26)}
+
+/* nav */
+.nav-in{position:relative;z-index:3;display:flex;align-items:center;height:72px;padding-left:var(--gut)}
+.brand{margin-right:auto}.brand .p1-logo{height:21px}
+.nav-links{display:flex;align-items:center;gap:30px;align-self:stretch;padding:0 30px 0 56px}
+.nav-links a{font-size:15px;font-weight:600;opacity:.8;transition:opacity .2s}.nav-links a:hover{opacity:1}
+.nav-right{align-self:stretch;display:flex}
+.nav-right .btn{height:100%;padding:0 34px}
+@media (max-width:860px){.nav-links{display:none}.nav-right .btn{padding:0 22px}}
+
+/* stage */
+.stage{position:relative;flex:1;display:flex;align-items:center;overflow:hidden;padding:clamp(48px,8vh,96px) 0 clamp(72px,10vh,120px)}
+.stage::before{content:"";position:absolute;inset:0;z-index:0;background:
+  radial-gradient(55% 70% at 88% 10%,rgba(51,71,255,.28),transparent 70%),
+  radial-gradient(40% 50% at 5% 110%,rgba(78,94,255,.12),transparent 70%)}
+.stage::after{content:"";position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:64px 64px;-webkit-mask-image:radial-gradient(70% 80% at 70% 45%,#000 10%,transparent 75%);mask-image:radial-gradient(70% 80% at 70% 45%,#000 10%,transparent 75%)}
+.big{position:absolute;right:calc(var(--gut) - .04em);bottom:-.17em;z-index:0;font-family:var(--head);font-weight:500;font-size:clamp(180px,30vw,440px);line-height:1;letter-spacing:-.07em;
+  color:transparent;-webkit-text-stroke:1px rgba(244,242,236,.14);user-select:none;pointer-events:none}
+.big b{font-weight:inherit;-webkit-text-stroke:1px rgba(78,94,255,.55)}
+.inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.eyebrow{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;color:var(--bone-dim)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:1.5px;background:var(--p1)}
+h1{margin-top:26px;font-family:var(--head);font-weight:500;font-size:clamp(44px,6vw,86px);line-height:.98;letter-spacing:-.06em;color:#fff;max-width:12ch;text-wrap:balance}
+.lede{margin-top:24px;max-width:44ch;font-size:clamp(17px,1.4vw,19px);line-height:1.55;color:var(--bone-dim);text-wrap:pretty}
+.actions{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.paths{margin-top:clamp(48px,7vh,72px);display:flex;flex-wrap:wrap;gap:10px;max-width:640px}
+.paths a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;border:1px solid rgba(255,255,255,.16);color:var(--bone);transition:border-color .25s,background .25s}
+.paths a:hover,.paths a:focus-visible{border-color:var(--p1b);background:rgba(51,71,255,.14);outline:none}
+.paths a b{font-weight:400;color:var(--p1b);margin-right:8px}
+.bot{position:relative;z-index:2;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px var(--gut);border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:var(--bone-dim)}
+.bot a{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone)}
+.bot a:hover{color:var(--p1b)}
+
+.rv{opacity:0;transform:translateY(18px);animation:rise .9s var(--ease) forwards}
+.rv.d1{animation-delay:.08s}.rv.d2{animation-delay:.16s}.rv.d3{animation-delay:.24s}.rv.d4{animation-delay:.32s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;animation:none}}
+@media (max-width:860px){
+  .stage{flex-direction:column;align-items:stretch;justify-content:center}
+  .big{position:relative;right:auto;bottom:auto;align-self:flex-start;margin:0 0 -.06em calc(var(--gut) - .03em);font-size:clamp(120px,38vw,300px);line-height:.9}
+}
+@media (max-width:560px){.paths a{flex:1 1 40%;text-align:center}.actions .btn{flex:1 1 auto;justify-content:center}}
 </style>
 </head>
 <body>
-  <span class="code">Error 404</span>
-  <h1>That page doesn't exist.</h1>
-  <p>The link may be out of date, or the address mistyped. Everything else is still where you left it.</p>
-  <div class="actions">
-    <a class="btn primary" href="/cypher/">Go to Cypher</a>
-    <a class="btn ghost" href="/">PlatformOne home</a>
+
+<header class="navwrap">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="PlatformOne home"><svg class="p1-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0.0 -726.0 6647.0 742.0" aria-hidden="true"><g fill="currentColor"><path d="M80 0H210V-256H355C521 -256 620 -342 620 -484C620 -625 521 -710 355 -710H80ZM210 -369V-597H349C438 -597 486 -558 486 -484C486 -408 437 -369 349 -369Z"/><path d="M832.0 0H911.0V-99H872.0C846.0 -99 832.0 -111 832.0 -139V-710H704.0V-126C704.0 -37 754.0 0 832.0 0Z"/><path d="M1144.0 12C1231.0 12 1299.0 -25 1326.0 -82C1337.0 -17 1380.0 4 1438.0 4C1455.0 4 1476.0 2 1484.0 0V-93H1467.0C1447.0 -93 1437.0 -101 1437.0 -130V-324C1437.0 -466 1359.0 -546 1207.0 -546C1074.0 -546 988.0 -482 967.0 -370L1098.0 -364C1110.0 -418 1144.0 -447 1207.0 -447C1274.0 -447 1309.0 -408 1309.0 -333L1132.0 -298C1015.0 -275 958.0 -226 958.0 -134C958.0 -41 1032.0 12 1144.0 12ZM1170.0 -81C1119.0 -81 1091.0 -104 1091.0 -146C1091.0 -183 1114.0 -207 1171.0 -218L1309.0 -246V-216C1309.0 -135 1255.0 -81 1170.0 -81Z"/><path d="M1769.0 0H1883.0V-99H1808.0C1763.0 -99 1742.0 -115 1742.0 -165V-435H1883.0V-534H1742.0V-659H1614.0V-534H1530.0V-435H1614.0V-153C1614.0 -47 1663.0 0 1769.0 0Z"/><path d="M2010.0 0H2139.0V-421H2272.0V-520H2139.0V-548C2139.0 -589 2157.0 -611 2199.0 -611H2279.0V-710H2175.0C2062.0 -710 2010.0 -651 2010.0 -555V-520H1934.0V-421H2010.0Z"/><path d="M2590.0 12C2748.0 12 2852.0 -98 2852.0 -267C2852.0 -436 2748.0 -546 2590.0 -546C2431.0 -546 2327.0 -436 2327.0 -267C2327.0 -98 2431.0 12 2590.0 12ZM2590.0 -92C2507.0 -92 2460.0 -156 2460.0 -267C2460.0 -377 2507.0 -442 2590.0 -442C2672.0 -442 2720.0 -377 2720.0 -267C2720.0 -156 2672.0 -92 2590.0 -92Z"/><path d="M2933.0 0H3061.0V-308C3061.0 -390 3101.0 -424 3183.0 -424H3233.0V-534H3184.0C3118.0 -534 3077.0 -502 3056.0 -430L3053.0 -534H2933.0Z"/><path d="M3315.0 0H3443.0V-306C3443.0 -391 3481.0 -442 3542.0 -442C3607.0 -442 3631.0 -393 3631.0 -306V0H3750.0V-306C3750.0 -392 3787.0 -442 3848.0 -442C3910.0 -442 3939.0 -398 3939.0 -310V0H4067.0V-343C4067.0 -475 3999.0 -546 3889.0 -546C3815.0 -546 3760.0 -507 3736.0 -436C3713.0 -505 3659.0 -546 3581.0 -546C3515.0 -546 3461.0 -509 3434.0 -445L3431.0 -534H3315.0Z"/></g><g class="one"><path d="M4489.0 16C4701.0 16 4828.0 -125 4828.0 -354C4828.0 -583 4701.0 -726 4489.0 -726C4278.0 -726 4150.0 -583 4150.0 -354C4150.0 -125 4278.0 16 4489.0 16ZM4489.0 -97C4361.0 -97 4285.0 -192 4285.0 -354C4285.0 -516 4361.0 -613 4489.0 -613C4617.0 -613 4693.0 -516 4693.0 -354C4693.0 -192 4617.0 -97 4489.0 -97Z"/><path d="M4911.0 0H5039.0V-302C5039.0 -392 5082.0 -442 5151.0 -442C5220.0 -442 5244.0 -392 5244.0 -302V0H5372.0V-343C5372.0 -463 5308.0 -546 5190.0 -546C5119.0 -546 5059.0 -516 5030.0 -443L5027.0 -534H4911.0Z"/><path d="M5715.0 12C5838.0 12 5929.0 -52 5958.0 -156L5827.0 -164C5812.0 -117 5773.0 -90 5716.0 -90C5640.0 -90 5591.0 -137 5586.0 -231H5966.0V-260C5966.0 -440 5865.0 -546 5712.0 -546C5555.0 -546 5453.0 -435 5453.0 -267C5453.0 -98 5555.0 12 5715.0 12ZM5586.0 -317C5596.0 -400 5643.0 -445 5712.0 -445C5780.0 -445 5827.0 -404 5833.0 -317Z"/></g><rect x="6147.0" y="-480.0" width="500.0" height="500.0" rx="80.0" class="sq"/></svg></a>
+    <nav class="nav-links" aria-label="Primary"><a href="/#why">Why we exist</a><a href="/#build">What we build</a><a href="/#products">Our products</a><a href="/cypher/">Cypher</a></nav>
+    <div class="nav-right"><a href="/#talk" class="btn btn-light">Talk to us</a></div>
   </div>
-  <div class="sig">A PlatformOne company</div>
+</header>
+
+<main class="stage">
+  <div class="big" aria-hidden="true">4<b>0</b>4</div>
+  <div class="inner">
+    <span class="eyebrow rv">Error 404</span>
+    <h1 class="rv d1">That page doesn't exist.</h1>
+    <p class="lede rv d2">The link may be out of date, or the address mistyped. Everything else is still where you left it.</p>
+    <div class="actions rv d3">
+      <a class="btn btn-light" href="/">PlatformOne home →</a>
+      <a class="btn btn-glass" href="/cypher/">Go to Cypher</a>
+    </div>
+    <nav class="paths rv d4" aria-label="Popular pages">
+      <a href="/#why"><b>01</b>Why we exist</a><a href="/#products"><b>02</b>Our products</a><a href="/cypher/"><b>03</b>Cypher</a><a href="/legal/"><b>04</b>Legal</a>
+    </nav>
+  </div>
+</main>
+
+<div class="bot"><span>© 2026 PlatformOne.</span><a href="mailto:hello@getplatformone.com">hello@getplatformone.com</a></div>
+
 </body>
 </html>
